@@ -1,0 +1,9 @@
+run consumer : python consumer.py on directory workflow-engine-new
+run dead consumer: python  consumer_deadqueue.py on directory workflow-engine-new
+fastapi : uvicorn route:app --reload  on directory workflow-engine-new  
+present in http://127.0.0.1:8000/docs#       
+tests:  pytest test.py      on directory workflow-engine-new
+elastic: ./elasticsearch -E xpack.security.enabled=false on C:\Users\shake\Downloads\elasticsearch-8.15.3-windows-x86_64\elasticsearch-8.15.3\bin directory
+present in http://localhost:9200/
+kibana: kibana.bat on C:\Users\shake\Downloads\kibana-8.15.3-windows-x86_64\kibana-8.15.3\bin
+present in http://localhost:5601/app/dashboards#/view/
